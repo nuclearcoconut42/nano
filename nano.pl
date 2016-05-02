@@ -12,7 +12,7 @@ my $login-pass;
 sub login{
     $path->say(
 	channel => 'msg',
-	msg => 'NickServ',
+	who => 'NickServ',
 	body => 'identify ' . $password;
 	)
 }
