@@ -7,18 +7,20 @@ use base qw( Bot::BasicBot );
 
 my $path;
 my $prefix;
+my $login-pass;
 
 sub login{
     $path->say(
 	channel => 'msg',
 	msg => 'NickServ',
-	body => 'identify '.$password;
+	body => 'identify ' . $password;
 	)
 }
 
 sub connected{
     $path = shift;
     $prefix = ".";
+    $login-pass = $ARGV[0];
     login();
 }
 
