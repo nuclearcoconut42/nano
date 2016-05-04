@@ -12,18 +12,8 @@ my $login_pass;
 sub login{
     $path->say(
 	channel => 'msg',
-<<<<<<< HEAD
 	msg => 'NickServ',
 	body => 'identify ' . $login_pass;
-=======
-<<<<<<< HEAD
-	who => 'NickServ',
-	body => 'identify ' . $password;
-=======
-	msg => 'NickServ',
-	body => 'identify ' . $login_pass;
->>>>>>> refs/remotes/origin/master
->>>>>>> refs/remotes/origin/dev
 	)
 }
 
