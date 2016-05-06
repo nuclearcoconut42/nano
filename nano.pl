@@ -1,47 +1,49 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
+
+use diagnostics;
 use warnings;
 use strict;
 
 package nano;
-use base qw( Bot::BasicBot );
+use parent qw( Bot::BasicBot::Pluggable );
 
 my $path;
 my $prefix;
 my $login_pass;
 
-sub login{
+my $nano = nano->new(
+    server => 'irc.rizon.io',
+    port => '6667',
+    ssl => 0,
+    channels => [ '#rice' ],
+    username => 'nano-chan',
+    nick => 'nano-chan',
+);
+
+sub login {
     $path->say(
-	channel => 'msg',
-<<<<<<< HEAD
-	who => 'NickServ',
-	body => 'identify ' . $password;
-=======
-	msg => 'NickServ',
-	body => 'identify ' . $login_pass;
->>>>>>> refs/remotes/origin/master
-	)
+    channel => 'msg',
+    msg => 'NickServ',
+    body => 'identify ' . $login_pass;
+    )
 }
 
-sub connected{
+sub connected {
     $path = shift;
     $prefix = ".";
     $login_pass = $ARGV[0];
     login();
 }
 
-sub chanjoin{
+sub chanjoin {
     my ($self, $message) = @_;
     unless($message->{who} =~ m/nano-chan/){
-	    return "Hello, $message->{who}!\n";
+        return "Hello, $message->{who}!\n";
     }
 }
 
-sub help{
+sub help {
     "I say hello to people who enter the channel!"
 }
 
-nano->new(
-    server => 'irc.rizon.io',
-    channels => [ '#rice' ],
-    nick => 'nano-chan',
-    )->run();
+$nano->run();
