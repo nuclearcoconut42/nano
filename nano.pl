@@ -20,19 +20,9 @@ my $nano = nano->new(
     nick => 'nano-chan',
 );
 
-sub login {
-    $path->say(
-    channel => 'msg',
-    msg => 'NickServ',
-    body => 'identify ' . $login_pass,
-    )
-}
-
 sub connected {
     $path = shift;
     $prefix = ".";
-    $login_pass = $ARGV[0];
-    login();
 }
 
 sub chanjoin {
