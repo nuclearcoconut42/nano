@@ -12,7 +12,7 @@ my $prefix;
 my $login_pass;
 
 my $nano = nano->new(
-    server => 'irc.rizon.io',
+    server => 'irc.rizon.net',
     port => '6667',
     ssl => 0,
     channels => [ '#rice' ],
@@ -24,7 +24,7 @@ sub login {
     $path->say(
     channel => 'msg',
     msg => 'NickServ',
-    body => 'identify ' . $login_pass;
+    body => 'identify ' . $login_pass,
     )
 }
 
